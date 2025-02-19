@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="card p-4 shadow-lg">
+    <h2 class="text-center"><%= @book.new_record? ? "Add New Book" : "Edit Book" %></h2>
+
+    <%= form_with(model: book, local: true, class: "mt-4") do |f| %>
+      <div class="mb-3">
+        <%= f.label :title, class: "form-label" %>
+        <%= f.text_field :title, class: "form-control", placeholder: "Enter book title" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :author, class: "form-label" %>
+        <%= f.text_field :author, class: "form-control", placeholder: "Enter author name" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :genre, class: "form-label" %>
+        <%= f.text_field :genre, class: "form-control", placeholder: "Enter genre" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :published_date, class: "form-label" %>
+        <%= f.date_field :published_date, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :status, class: "form-label" %>
+        <%= f.select :status, ["Available", "Borrowed"], {}, class: "form-select" %>
+      </div>
+
+      <div class="mb-3 text-center">
+        <%= f.submit class: "btn btn-primary w-50" %>
+      </div>
+    <% end %>
+
+    <div class="text-center mt-3">
+      <%= link_to "Back", books_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>
