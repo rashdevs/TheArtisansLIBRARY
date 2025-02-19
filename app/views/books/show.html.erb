@@ -1,0 +1,91 @@
+<div class="container mt-4">
+  <div class="card shadow-lg p-4">
+    <h2 class="text-center mb-3"><%= @book.title %></h2>
+
+    <p><strong>Author:</strong> <%= @book.author %></p>
+    <p><strong>Genre:</strong> <%= @book.genre %></p>
+    <p><strong>Published Date:</strong> <%= @book.published_date %></p>
+    <p><strong>Status:</strong> 
+      <% if @book.status == "Available" %>
+        <span class="badge bg-success"><%= @book.status %></span>
+      <% else %>
+        <span class="badge bg-danger"><%= @book.status %></span>
+      <% end %>
+    </p>
+
+    <!-- Borrowing / Returning Section -->
+    <div class="mt-4">
+      <% if @book.status == "Available" %>
+        <h4>Borrow This Book</h4>
+        <%= form_with url: borrow_book_path(@book), method: :post, class: "row g-3" do %>
+          <div class="col-md-6">
+            <label class="form-label">ID Number:</label>
+            <%= text_field_tag :id_number, nil, class: "form-control", placeholder: "Enter your ID Number", required: true %>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Name:</label>
+            <%= text_field_tag :name, nil, class: "form-control", placeholder: "Enter your Name", required: true %>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Phone Number:</label>
+            <%= text_field_tag :phone_number, nil, class: "form-control", placeholder: "Enter your Phone Number", required: true %>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Email:</label>
+            <%= text_field_tag :email, nil, class: "form-control", placeholder: "Enter your Email", required: true %>
+          </div>
+
+          <div class="col-12 text-center">
+            <%= submit_tag "Borrow Book", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      <% else %>
+        <h4 class="text-danger">This book is currently borrowed.</h4>
+        <div class="text-center">
+         <%= button_to "Return Book", return_book_book_path(@book), method: :post, class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Borrowing History -->
+    <div class="mt-4">
+       <% if @book.status == "Available" %>
+    <h4>Borrow This Book</h4>
+    <%= form_with url: borrow_book_path(@book), method: :post, class: "row g-3" do %>
+      <div class="col-md-6">
+        <label class="form-label">ID Number:</label>
+        <%= text_field_tag :id_number, nil, class: "form-control", placeholder: "Enter your ID Number", required: true %>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Name:</label>
+        <%= text_field_tag :name, nil, class: "form-control", placeholder: "Enter your Name", required: true %>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Phone Number:</label>
+        <%= text_field_tag :phone_number, nil, class: "form-control", placeholder: "Enter your Phone Number", required: true %>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Email:</label>
+        <%= text_field_tag :email, nil, class: "form-control", placeholder: "Enter your Email", required: true %>
+      </div>
+
+      <div class="col-12 text-center">
+        <%= submit_tag "Borrow Book", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+       <% else %>
+    <h4 class="text-danger">This book is currently borrowed.</h4>
+    <div class="text-center">
+      <%= button_to "Return Book", return_book_book_path(@book), method: :post, class: "btn btn-success" %>
+    </div>
+       <% end %>
+    </div>
+
+  </div>
+</div>
