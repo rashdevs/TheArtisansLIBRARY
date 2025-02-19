@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  author: MyString
+  genre: MyString
+  published_date: 2025-02-18
+  status: MyString
+  borrower_name: MyString
+  borrowed_on: 2025-02-18
+  returned_on: 2025-02-18
+
+two:
+  title: MyString
+  author: MyString
+  genre: MyString
+  published_date: 2025-02-18
+  status: MyString
+  borrower_name: MyString
+  borrowed_on: 2025-02-18
+  returned_on: 2025-02-18
